@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Understanding Cyclical Stocks</title>
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The infographic follows a narrative structure to educate the user. It begins with a high-level definition (The Hook), moves to the core concept of the economic cycle's impact (The Engine), presents a direct comparison to defensive stocks (The Contrast), showcases real-world examples (The Universe), and concludes with actionable takeaways (The Strategy). This logical flow transforms the dense report into an easily digestible and memorable story. -->
+    <!-- Visualization & Content Choices: 
+        1.  Economic Cycle: Goal: Change. Viz: Custom HTML/CSS Flow Diagram. Justification: A visual flow is more intuitive for showing a process than text alone. Method: HTML/CSS with Tailwind. NO SVG.
+        2.  Volatility Comparison: Goal: Compare. Viz: Chart.js Bar Chart. Justification: A bar chart is the clearest way to compare the single metric (Beta) between two categories. Library: Chart.js. NO SVG.
+        3.  Sector Showcase: Goal: Organize. Viz: Icon-based grid. Justification: A grid of cards with icons makes the list of industries scannable and visually engaging. Method: HTML/CSS with Unicode icons. NO SVG.
+        4.  Key Stat Callout: Goal: Inform. Viz: Single Big Number. Justification: Highlights a key data point for maximum impact. Method: Styled HTML text. NO SVG.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F9FF; /* sky-50 */
+        }
+        .text-shadow-custom {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        .flow-arrow {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: #38BDF8; /* sky-400 */
+            z-index: 0;
+        }
+        .flow-arrow-right {
+            height: 2px;
+            background-color: #38BDF8; /* sky-400 */
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Header -->
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-sky-700 text-shadow-custom">A Visual Guide to Cyclical Stocks</h1>
+            <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Understanding how some stocks ride the waves of the U.S. economy.</p>
+        </header>
+
+        <!-- What are Cyclical Stocks? -->
+        <section class="mb-20">
+            <div class="card p-8 grid md:grid-cols-2 gap-8 items-center">
+                <div class="prose prose-slate max-w-none">
+                    <h2 class="text-2xl font-bold text-sky-600">What Are They?</h2>
+                    <p>Cyclical stocks belong to companies that sell <strong class="text-sky-700">non-essential</strong> goods and services—things we buy when the economy is strong and we feel financially secure.</p>
+                    <p>Think new cars, vacations, and luxury goods. Their performance is directly tied to the health of the economy, rising during expansions and falling during recessions.</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-6xl">🚗 ✈️ 🏠 💎</div>
+                    <p class="mt-4 font-semibold text-slate-500">Wants, Not Needs</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Economic Cycle -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-4 text-sky-700">The Economic Cycle is Their Engine</h2>
+            <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">The performance of cyclical stocks follows the four phases of the U.S. economic cycle. They don't just mirror the economy; they often amplify its movements.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 relative">
+                <!-- Arrows for Desktop -->
+                <div class="hidden md:block absolute top-1/4 left-1/2 w-px h-1/2 bg-sky-300 transform -translate-x-1/2"></div>
+                <div class="hidden md:block absolute top-1/2 left-1/4 w-1/2 h-px bg-sky-300 transform -translate-y-1/2"></div>
+
+                <!-- Phase 1: Expansion -->
+                <div class="card p-6 text-center">
+                    <div class="text-4xl mb-3">📈</div>
+                    <h3 class="text-xl font-bold text-sky-600">1. Expansion</h3>
+                    <p class="text-slate-500 mt-2">The economy is growing, jobs are plentiful, and confidence is high. People spend more on discretionary items.</p>
+                    <p class="mt-3 font-bold text-green-600">Cyclicals Perform Strongly</p>
+                </div>
+
+                <!-- Phase 2: Peak -->
+                <div class="card p-6 text-center">
+                    <div class="text-4xl mb-3">⛰️</div>
+                    <h3 class="text-xl font-bold text-sky-600">2. Peak</h3>
+                    <p class="text-slate-500 mt-2">Growth hits its maximum. Inflation may rise, and investors become cautious about a potential downturn.</p>
+                    <p class="mt-3 font-bold text-yellow-600">Performance May Weaken</p>
+                </div>
+
+                <!-- Phase 3: Contraction -->
+                <div class="card p-6 text-center">
+                    <div class="text-4xl mb-3">📉</div>
+                    <h3 class="text-xl font-bold text-sky-600">3. Contraction</h3>
+                    <p class="text-slate-500 mt-2">The economy slows, and unemployment may rise. Spending on non-essentials is cut back significantly.</p>
+                    <p class="mt-3 font-bold text-red-600">Cyclicals Underperform</p>
+                </div>
+
+                <!-- Phase 4: Trough -->
+                <div class="card p-6 text-center">
+                    <div class="text-4xl mb-3">🌊</div>
+                    <h3 class="text-xl font-bold text-sky-600">4. Trough</h3>
+                    <p class="text-slate-500 mt-2">The economy bottoms out. This can be a strategic time to buy cyclicals at low prices before the next recovery.</p>
+                    <p class="mt-3 font-bold text-blue-600">Opportunity for Gains</p>
+                </div>
+            </div>
+             <div class="mt-12 card p-6 text-center bg-sky-800 text-white">
+                <p class="text-lg">A typical US economic cycle has lasted</p>
+                <p class="text-5xl font-extrabold my-2">~5.5 Years</p>
+                <p class="text-sm opacity-80">on average, since the 1950s (Source: NBER)</p>
+            </div>
+        </section>
+
+        <!-- Cyclical vs Defensive -->
+        <section class="mb-20">
+            <h2 class="text-3xl font-bold text-center mb-4 text-sky-700">Cyclical vs. Defensive Stocks</h2>
+            <p class="text-center text-slate-600 mb-12 max-w-3xl mx-auto">The opposite of a cyclical stock is a defensive stock. Understanding their differences in volatility is key for investors.</p>
+            <div class="card p-8">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                         <p class="text-slate-600 mb-4">Volatility is often measured by <strong class="text-sky-700">Beta</strong>. A Beta above 1.0 means a stock is more volatile than the overall market. A Beta below 1.0 means it's less volatile.</p>
+                         <ul class="list-none space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">🚀</span>
+                                <div><strong class="text-sky-700">Cyclical Stocks:</strong> High Beta. They offer higher potential returns but come with greater risk.</div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-2xl mr-3">🛡️</span>
+                                <div><strong class="text-teal-600">Defensive Stocks:</strong> Low Beta. They provide stability and consistent dividends, as they sell essential goods like food and utilities.</div>
+                            </li>
+                         </ul>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="betaChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Cyclical Sectors -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-12 text-sky-700">Major U.S. Cyclical Sectors</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                <div class="card p-4 text-center aspect-square flex flex-col justify-center items-center">
+                    <div class="text-4xl md:text-5xl">🚗</div>
+                    <p class="mt-3 font-bold text-sm md:text-base">Automotive</p>
+                </div>
+                <div class="card p-4 text-center aspect-square flex flex-col justify-center items-center">
+                    <div class="text-4xl md:text-5xl">🏠</div>
+                    <p class="mt-3 font-bold text-sm md:text-base">Housing</p>
+                </div>
+                <div class="card p-4 text-center aspect-square flex flex-col justify-center items-center">
+                    <div class="text-4xl md:text-5xl">✈️</div>
+                    <p class="mt-3 font-bold text-sm md:text-base">Travel & Leisure</p>
+                </div>
+                <div class="card p-4 text-center aspect-square flex flex-col justify-center items-center">
+                    <div class="text-4xl md:text-5xl">💳</div>
+                    <p class="mt-3 font-bold text-sm md:text-base">Financials</p>
+                </div>
+                <div class="card p-4 text-center aspect-square flex flex-col justify-center items-center">
+                    <div class="text-4xl md:text-5xl">💎</div>
+                    <p class="mt-3 font-bold text-sm md:text-base">Luxury Goods</p>
+                </div>
+                <div class="card p-4 text-center aspect-square flex flex-col justify-center items-center">
+                    <div class="text-4xl md:text-5xl">💻</div>
+                    <p class="mt-3 font-bold text-sm md:text-base">Technology</p>
+                </div>
+                <div class="card p-4 text-center aspect-square flex flex-col justify-center items-center">
+                    <div class="text-4xl md:text-5xl">⛽</div>
+                    <p class="mt-3 font-bold text-sm md:text-base">Basic Materials</p>
+                </div>
+                 <div class="card p-4 text-center aspect-square flex flex-col justify-center items-center">
+                    <div class="text-4xl md:text-5xl">🛍️</div>
+                    <p class="mt-3 font-bold text-sm md:text-base">Retail</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-20 pt-8 border-t border-sky-200">
+            <p class="text-sm text-slate-500">This infographic is for educational purposes only and is based on the report "Understanding Cyclical Stocks in the United States Market". It is not financial advice.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const betaChartCtx = document.getElementById('betaChart').getContext('2d');
+        new Chart(betaChartCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Cyclical Stocks', 'Defensive Stocks'],
+                datasets: [{
+                    label: 'Average Beta (Volatility)',
+                    data: [1.5, 0.6],
+                    backgroundColor: [
+                        '#0284C7', // sky-600
+                        '#0D9488'  // teal-600
+                    ],
+                    borderColor: [
+                        '#0369A1', // sky-700
+                        '#0F766E'  // teal-700
+                    ],
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            },
+                            label: function(context) {
+                                return `Average Beta: ${context.raw}`;
+                            }
+                        },
+                        backgroundColor: '#075985', // sky-800
+                        titleFont: { size: 14, weight: 'bold' },
+                        bodyFont: { size: 12 },
+                        padding: 10,
+                        cornerRadius: 5
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#E0F2FE' // sky-100
+                        },
+                        ticks: {
+                            color: '#475569' // slate-600
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#1E293B', // slate-800
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
